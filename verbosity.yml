@@ -1,0 +1,15 @@
+---
+- hosts: tomcat
+  become: yes
+  tasks:
+  - name: text message without verbosity
+    debug:
+      msg: 
+      - This is a text message without verbosity
+  - name: level 2 verbosity
+    debug:
+      msg:
+      - This is a text message with Level 2 Verbosity
+      verbosity: 2    
+
+...
