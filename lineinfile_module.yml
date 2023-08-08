@@ -1,0 +1,31 @@
+---
+- name: Using lineinfile module by installing the apache2 packge with service restart and notify the hadlers after ports changed
+  hosts: tomcat
+  become: yes
+  tasks:
+  - name: install apache2
+    package: name=apache2 state=latest update_cache=yes
+    tags: ['setup']
+
+  - name: copy the html file
+    copy: src=/tmp/index.html dest=/var/www/html owner=root group=root mode=755
+    tags: ['update', 'sync']
+
+  - name: start the service
+    service: name=apache2 state=restarted
+
+  - name: changing the port number
+    lineinfile:
+      path: /etc/apache2/ports.conf
+      regexp: '^Listen '
+      insertafter: '^#Listen '
+      line: Listen 8080
+    notify: restart_apache2
+    tags: ['update', 'sync' ]
+
+  handlers:    
+  - name: restart_apache2
+    service: name=apache2 state=restarted
+
+...
+
