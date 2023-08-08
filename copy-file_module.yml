@@ -1,0 +1,15 @@
+---
+- name: using Copy module
+  hosts: tomcat
+  become: yes
+  tasks:
+  - name: copy the demo file from /tmp
+    copy: src=/tmp/demo.txt dest=/tmp
+
+  - name: create the demo1 file
+    file: name=/tmp/demo1.txt state=touch mode=755
+
+  - name: create the demo2 directory
+    file: name=/tmp/demo2 state=directory mode=755
+
+...
