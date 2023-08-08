@@ -1,0 +1,9 @@
+---
+- hosts: tomcat
+  become: yes
+  tasks:
+  - name: using debug module to print the message
+    debug:
+      msg: "Today's date and time : {{ '%d-%m-%Y  %H:%M:%S:%d' | strftime }}"
+
+...
