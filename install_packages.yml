@@ -1,0 +1,14 @@
+---
+- name: Install some packages
+  hosts: tomcat
+  become: yes
+  gather_facts: false
+  tasks:
+  - name: Install wget
+    package: name=wget state=latest update_cache=yes
+
+  - name: Install httpd
+    package: name=apache2 state=latest update_cache=yes
+
+...
+

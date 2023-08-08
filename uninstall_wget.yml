@@ -1,0 +1,11 @@
+---
+- name: uninstall the wget package
+  hosts: tomcat
+  become: yes
+  gather_facts: false
+  tasks:
+  - name: wget package
+    package: name=wget state=absent
+
+...
+
