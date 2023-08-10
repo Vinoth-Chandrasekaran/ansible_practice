@@ -1,0 +1,9 @@
+---
+- hosts: tomcat
+  become: yes
+  roles:
+    - name: motd
+      system_manager: admin@admin.com
+
+...
+

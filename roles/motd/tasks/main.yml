@@ -1,0 +1,11 @@
+---
+- name: copy the motd file
+  template:
+    src: /home/ubuntu/Playbooks/ansible_practice/roles/motd/templates/motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 444
+
+...
+
