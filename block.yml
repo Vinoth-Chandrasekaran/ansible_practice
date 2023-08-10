@@ -1,0 +1,15 @@
+---
+- hosts: tomcat
+  tasks:
+  - name: block level sudo permission
+    block:
+    - name: list user directory content
+      command: "ls -l /usr"
+    - name: list root directory content
+      command: "ls -l /root"
+    become: yes
+
+  - name: list ubuntu home directory
+    command: "ls -l /home/ubuntu"
+
+...
