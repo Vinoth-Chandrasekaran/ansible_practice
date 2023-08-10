@@ -1,0 +1,23 @@
+---
+- hosts: tomcat
+  become: yes
+  tasks:
+  - block:
+    - name: install apache2
+      package: name=apache2 state=latest update_cache=yes
+
+    - name: move the apache config files
+      command: "mv /etc/apache2/apache2.conf /etc/apache2/apache2.conf.bak"
+
+    - name: This will fail
+      command: "ls -l /etc/apache2/apache.conf"
+
+    rescue:
+      - name: Restoring apache2 conf
+        command: "mv /etc/apache2/apache2.conf.bak /etc/apache2/apache2.conf"
+
+    always:
+      - name: restart apache2
+        service: name=apache2 state=restarted
+
+...
