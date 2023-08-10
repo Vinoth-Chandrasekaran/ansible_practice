@@ -1,0 +1,27 @@
+---
+- name: Flush handlers
+  hosts: tomcat
+  become: yes
+  tasks:
+  - name: install apache2
+    package: name=apache2 state=latest update_cache=yes
+    notify: start_apache2
+
+  - name: Flush handlers
+    meta: flush_handlers
+
+  - name: install nginx
+    package: name=nginx state=latest update_cache=yes
+    notify: start_nginx
+
+  - name: Flush handlers
+    meta: flush_handlers
+
+  handlers:
+  - name: start_apache2
+    service: name=apache2 state=started
+
+  - name: start_nginx
+    service: name=nginx state=started
+
+...
