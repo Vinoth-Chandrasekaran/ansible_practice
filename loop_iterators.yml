@@ -1,0 +1,19 @@
+---
+- name: using loop
+  hosts: tomcat
+  become: yes
+  ignore_errors: yes
+  tasks:
+  - package: name={{item}} state=latest update_cache=yes
+    loop:
+    - jenkins
+    - git
+    - apache2
+    - vim
+
+  - user: name={{ item }}
+    loop:
+    - vinoth
+    - chandru
+
+...
