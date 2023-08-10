@@ -1,0 +1,12 @@
+---
+- hosts: tomcat
+  become: yes
+  tasks:
+  - package: name=apache2 state=latest update_cache=yes
+    notify: start_apache2
+  
+  handlers:
+  - name: start_apache2
+    service: name=apache2 state=restarted
+
+...
