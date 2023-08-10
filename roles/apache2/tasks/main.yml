@@ -1,0 +1,6 @@
+---
+# tasks file for apache2
+- name: install apache2
+  package: name=apache2 state=latest update_cache=yes
+  notify: restart_apache2
+...
