@@ -1,0 +1,26 @@
+terraform init
+terraform validate
+terraform plan
+terraform apply
+terraform destroy
+
+
+
+TERRAFORM INSTALLATION
+lsb_release -a
+sudo apt install unzip -y
+wget https://releases.hashicorp.com/terraform/1.5.4/terraform_1.5.4_linux_amd64.zip
+ll
+unzip terraform_1.5.4_linux_amd64.zip
+sudo unzip terraform_1.5.4_linux_amd64.zip
+ll
+mv terraform /usr/local/bin/
+sudo mv terraform /usr/local/bin/
+which terraform
+
+
+
+sudo apt install awscli
+sudo apt list --installed awscli
+aws congigure list
+aws configure
