@@ -1,0 +1,15 @@
+#Encrypt a new playbook
+
+ansible-vault create --vault-id @prompt <.yml>
+ansible-vault view <.yml>
+ansible-vault edit <.yml>
+ansible-playbook --vault-id @prompt <.yml>
+
+#Encrypt already written playbook
+
+ansible-vault encrypt --vault-id @prompt <.yml>
+ansible-vault decrypt --ask-vault-pass <.yml>
+ansible-vault rekey <.yml>
+
+ansible-vault encrypt_string --vault-id @prompt <string>
+

@@ -1,0 +1,29 @@
+---
+- name: encrypt the string under the variable
+  hosts: tomcat
+  become: yes
+  gather_facts: false
+  vars:
+    my_secret: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          35323535376131356561303263373838383362313332346435653266343631316561653332386539
+          6665363032336635626439653934653163346434636266340a373664326665626132363736323938
+          36666561643861346463396135316564333965303764356465343962636535303430356666653534
+          6161336563663061610a343338623138323762333564653561636335623064333330393632373366
+          3337
+  tasks:
+  - debug:
+      var: my_secret
+
+...
+
+#- name: encrypt the string under the variable
+#  hosts: tomcat
+#  become: yes
+#  gather_facts: false
+#  vars:
+#    my_secret: password
+#  tasks:
+#  - debug:
+#      var: my_secret
+
